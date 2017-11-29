@@ -1,0 +1,35 @@
+﻿<div class="container color-dark"> 
+    <div class="col">
+        <p>רשימה</p>
+    </div>
+    <div class="col">
+        <p>הוסף פריטים לרשימה ({{itemCount}}) </p>
+    </div>
+</div>
+<div class="container color-light" [@myitems]="myitems.length">
+    <div class="col">
+        <p class="sm">הוסף פריט לרשימה</p>
+
+        <form>
+            <div class="col">
+                <input type="text" class="txt" name="myitems" placeholder="{{itemPlacenName}}" [(ngModel)]="itemText">
+            </div>
+                <div class="col">
+
+                <input type="submit" class="btn" [value]="btnAddText" (click)="addItem()">
+                <input type="button" class="btn" [value]="btnClearText" (click)="clearItems()">
+            </div>
+</form>
+    </div> 
+    <div class="col" style="font-size:18px;">
+        <p class="item-container" *ngFor="let item of myitems; let i = index" >
+             {{item}} 
+         <span class="font-icon" routerLink="../about/{{i}}" > 
+            <i class="fa fa-info-circle" aria-hidden="true"></i> 
+          </span> 
+        <span class="font-icon" (click)="removeItem(i)">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+        </span>
+        </p>
+    </div> 
+</div>
